@@ -7,7 +7,7 @@ function Square(props) {
       <button
         className="square"
         onClick={() => {
-//          alert('clicked${this.props.value}!!!!!');
+         alert('clicked${this.props.value}!!!!!');
 //          this.setState({value: 'X'});
             props.onClick();
         }}>
