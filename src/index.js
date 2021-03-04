@@ -7,7 +7,7 @@ function Square(props) {
       <button
         className="square"
         onClick={() => {
-         alert('clicked${this.props.value}!!!!!');
+         // alert('clicked${this.props.value}!!!!!');
 //          this.setState({value: 'X'});
             props.onClick();
         }}>
@@ -27,6 +27,11 @@ class Board extends React.Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
+
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
@@ -85,20 +90,6 @@ class Game extends React.Component {
           <div>{/* status */}</div>
           <ol>{/* TODO */}</ol>
         </div>
-      </div>
-    );
-  }
-}
-class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
       </div>
     );
   }
